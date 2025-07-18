@@ -34,6 +34,7 @@ const FlightBooking = () => {
   const tabContents = {
     Flights: (
       <>
+     
         <div className="trip-type">
           <label><input type="radio" name="trip" defaultChecked /> One Way</label>
           <label><input type="radio" name="trip" /> Round Trip</label>
@@ -126,7 +127,7 @@ const FlightBooking = () => {
           </div>
         )}
 
-        <PartnerSection />
+        
       </>
     ),
 
@@ -152,6 +153,8 @@ const FlightBooking = () => {
 
   return (
     <div className="booking-container">
+       <h1 style={{color:'red',textAlign:'center', fontSize:'6vh'}}>Make your trip  <br/>more enjoyable😎
+      and have more memories with travel booking app</h1>
       <div className="tab-section">
         {tabs.map((tab, index) => (
           <div
