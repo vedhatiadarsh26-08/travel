@@ -1,16 +1,31 @@
-import React from 'react';
-import logo from '../assets/logo.png'; 
+import React, { useState } from 'react';
+import logo from '../assets/logo.png';
 import './navbar.css';
-import bg from '../assets/bg.png';
-import FlightBooking from './Flightbooking';
-import login from './Login.jsx'
+import FlightBooking from './FlightBooking.jsx';
+import Login from './Login.jsx';
 import Signup from './Register.jsx';
 
-
-
 const Navbar = () => {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
+    setShowSignup(false);
+  };
+
+  const toggleSignup = () => {
+    setShowSignup(!showSignup);
+    setShowLogin(false);
+  };
+
+  const closeModal = () => {
+    setShowLogin(false);
+    setShowSignup(false);
+  };
+
   return (
-    <div className="landing" style={{}}>
+    <div className="landing">
       <div className="navbar">
         <div className="left">
           <img src={logo} alt="Logo" className="logo" />
@@ -25,12 +40,29 @@ const Navbar = () => {
               <a href="#">Delhi</a>
             </div>
           </div>
-          <button className="nav-btn" onClick={<Signup/>}>Signup</button>
-          <button className="nav-btn" onClick={<login/>}>Login</button>
+          <button className="nav-btn" onClick={toggleSignup}>Signup</button>
+          <button className="nav-btn" onClick={toggleLogin}>Login</button>
         </div>
       </div>
-      <FlightBooking/>
-      
+
+      <FlightBooking />
+
+      {/* Floating Modals */}
+      {showLogin && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <Login />
+          </div>
+        </div>
+      )}
+
+      {showSignup && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <Signup />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -152,9 +152,8 @@ const FlightBooking = () => {
   const tabs = Object.keys(tabContents);
 
   return (
-    <div className="booking-container">
-       <h1 style={{color:'red',textAlign:'center', fontSize:'6vh'}}>Make your trip  <br/>more enjoyable😎
-      and have more memories with travel booking app</h1>
+    <div className="booking-container" style={{backgroundColor:'#c3d7d1 '}}>
+       <h1 style={{color:'red',textAlign:'center', fontSize:'6vh'}}>Make your trip  <br/>more enjoyable😎</h1>
       <div className="tab-section">
         {tabs.map((tab, index) => (
           <div
