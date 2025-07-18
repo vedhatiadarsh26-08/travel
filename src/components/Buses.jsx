@@ -7,9 +7,30 @@ const Buses = () => {
   const [travelDate, setTravelDate] = useState('2025-07-18');
   const [busClass, setBusClass] = useState('ALL');
   const [option, setOption] = useState('book');
+  const [searchResults, setSearchResults] = useState([]);
 
   const cities = ['New Delhi', 'Kanpur', 'Lucknow', 'Mumbai', 'Bangalore'];
   const busClasses = ['ALL', 'AC', 'Non-AC', 'Sleeper', 'Seater'];
+
+  const busList = [
+    { id: 1, from: 'New Delhi', to: 'Kanpur', class: 'AC', name: 'Rajdhani Travels', time: '08:00 AM' },
+    { id: 2, from: 'New Delhi', to: 'Kanpur', class: 'Sleeper', name: 'Night Riders', time: '10:00 PM' },
+    { id: 3, from: 'Lucknow', to: 'Mumbai', class: 'Non-AC', name: 'CityLink', time: '07:30 AM' },
+    { id: 4, from: 'Mumbai', to: 'Bangalore', class: 'AC', name: 'GreenLine', time: '09:00 AM' },
+    { id: 5, from: 'New Delhi', to: 'Kanpur', class: 'Seater', name: 'TravelExpress', time: '01:00 PM' },
+  ];
+
+  const handleSearch = () => {
+    const filtered = busList.filter((bus) => {
+      return (
+        bus.from === from &&
+        bus.to === to &&
+        (busClass === 'ALL' || bus.class === busClass)
+      );
+    });
+
+    setSearchResults(filtered);
+  };
 
   return (
     <div className="bus-booking-container">
@@ -82,7 +103,25 @@ const Buses = () => {
         </div>
       </div>
 
-      <button className="search-button">SEARCH</button>
+      <button className="search-button" onClick={handleSearch}>SEARCH</button>
+
+      {/* Search Results */}
+      <div className="results-section">
+        {searchResults.length > 0 ? (
+          <div className="results-list">
+            <h3>Available Buses</h3>
+            <ul>
+              {searchResults.map((bus) => (
+                <li key={bus.id}>
+                  <strong>{bus.name}</strong> | {bus.class} | Departure: {bus.time}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p>No buses found. Try changing the filters.</p>
+        )}
+      </div>
     </div>
   );
 };

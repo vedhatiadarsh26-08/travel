@@ -7,9 +7,62 @@ const Train = () => {
   const [travelDate, setTravelDate] = useState('2025-07-18');
   const [travelClass, setTravelClass] = useState('ALL');
   const [option, setOption] = useState('book');
+  const [searchResults, setSearchResults] = useState([]);
 
   const stations = ['New Delhi', 'Kanpur', 'Lucknow', 'Mumbai', 'Chennai'];
   const classes = ['ALL', 'Sleeper (SL)', 'AC 3 Tier (3A)', 'AC 2 Tier (2A)', 'First Class (1A)', 'Second Sitting (2S)'];
+
+  const trainList = [
+    {
+      id: 1,
+      name: 'Shatabdi Express',
+      from: 'New Delhi',
+      to: 'Kanpur',
+      class: 'AC 2 Tier (2A)',
+      time: '08:30 AM',
+    },
+    {
+      id: 2,
+      name: 'Lucknow Mail',
+      from: 'New Delhi',
+      to: 'Kanpur',
+      class: 'Sleeper (SL)',
+      time: '10:00 PM',
+    },
+    {
+      id: 3,
+      name: 'Rajdhani Express',
+      from: 'Mumbai',
+      to: 'Chennai',
+      class: 'First Class (1A)',
+      time: '06:45 AM',
+    },
+    {
+      id: 4,
+      name: 'Gomti Express',
+      from: 'Lucknow',
+      to: 'Kanpur',
+      class: 'Second Sitting (2S)',
+      time: '09:15 AM',
+    },
+    {
+      id: 5,
+      name: 'Intercity Express',
+      from: 'New Delhi',
+      to: 'Kanpur',
+      class: 'AC 3 Tier (3A)',
+      time: '04:30 PM',
+    },
+  ];
+
+  const handleSearch = () => {
+    const filtered = trainList.filter(train =>
+      train.from === from &&
+      train.to === to &&
+      (travelClass === 'ALL' || train.class === travelClass)
+    );
+    setSearchResults(filtered);
+  };
 
   return (
     <div className="train-booking-container">
@@ -82,7 +135,25 @@ const Train = () => {
         </div>
       </div>
 
-      <button className="search-button">SEARCH</button>
+      <button className="search-button" onClick={handleSearch}>SEARCH</button>
+
+      {/* Search Results */}
+      <div className="results-section">
+        {searchResults.length > 0 ? (
+          <div className="results-list">
+            <h3>Available Trains</h3>
+            <ul>
+              {searchResults.map(train => (
+                <li key={train.id}>
+                  <strong>{train.name}</strong> | {train.class} | Departure: {train.time}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p>No trains found. Try changing your filters.</p>
+        )}
+      </div>
     </div>
   );
 };

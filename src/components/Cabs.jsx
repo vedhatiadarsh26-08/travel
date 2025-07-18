@@ -8,12 +8,32 @@ const Cabs = () => {
   const [pickupDate, setPickupDate] = useState('2025-07-18');
   const [pickupTime, setPickupTime] = useState('10:00');
   const [cabType, setCabType] = useState('Sedan');
+  const [searchResults, setSearchResults] = useState([]);
 
   const cities = ['New Delhi', 'Kanpur', 'Lucknow', 'Mumbai', 'Bangalore'];
   const cabTypes = ['Sedan', 'SUV', 'Mini', 'Luxury'];
 
+  const cabList = [
+    { id: 1, name: 'CityCab', from: 'New Delhi', to: 'Kanpur', type: 'Sedan', price: '₹1800' },
+    { id: 2, name: 'GoTaxi', from: 'New Delhi', to: 'Kanpur', type: 'SUV', price: '₹2500' },
+    { id: 3, name: 'MiniGo', from: 'Mumbai', to: 'Bangalore', type: 'Mini', price: '₹1500' },
+    { id: 4, name: 'LuxuryRide', from: 'New Delhi', to: 'Kanpur', type: 'Luxury', price: '₹3500' },
+  ];
+
+  const handleSearch = () => {
+    const filtered = cabList.filter(
+      (cab) =>
+        cab.from === from &&
+        cab.to === to &&
+        (cabType === 'ALL' || cab.type === cabType)
+    );
+    setSearchResults(filtered);
+  };
+
   return (
     <div className="cab-booking-container">
+      <h2 className="cab-title">Book Your Cab</h2>
+
       <div className="cab-trip-options">
         <label>
           <input
@@ -84,7 +104,24 @@ const Cabs = () => {
         </div>
       </div>
 
-      <button className="search-button">SEARCH CABS</button>
+      <button className="search-button" onClick={handleSearch}>SEARCH CABS</button>
+
+      <div className="results-section">
+        {searchResults.length > 0 ? (
+          <div className="results-list">
+            <h3>Available Cabs</h3>
+            <ul>
+              {searchResults.map((cab) => (
+                <li key={cab.id}>
+                  <strong>{cab.name}</strong> | {cab.type} | {cab.price}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p>No cabs found. Try changing the filters.</p>
+        )}
+      </div>
     </div>
   );
 };

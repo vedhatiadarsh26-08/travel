@@ -9,6 +9,10 @@ const TravelInsurance = () => {
     from: '2025-07-18',
     to: '2025-07-23'
   });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [travellers, setTravellers] = useState([{ age: '' }]);
+  const [showTravellerForm, setShowTravellerForm] = useState(false);
+  const [plansVisible, setPlansVisible] = useState(false);
 
   const toggleDestination = (destination) => {
     setSelectedDestinations(prev =>
@@ -17,6 +21,37 @@ const TravelInsurance = () => {
         : [...prev, destination]
     );
   };
+
+  const handleTravellerAgeChange = (index, value) => {
+    const updatedTravellers = [...travellers];
+    updatedTravellers[index].age = value;
+    setTravellers(updatedTravellers);
+  };
+
+  const addTraveller = () => {
+    setTravellers([...travellers, { age: '' }]);
+  };
+
+  const handleViewPlans = () => {
+    if (selectedDestinations.length === 0) {
+      alert('Please select at least one destination.');
+      return;
+    }
+    if (!travellers.length || travellers.some(t => !t.age)) {
+      alert('Please fill in the age of all travellers.');
+      return;
+    }
+    if (travellers.some(t => parseInt(t.age) > 65)) {
+      alert('Travellers above 65 are not covered.');
+      return;
+    }
+
+    setPlansVisible(true);
+  };
+
+  const filteredDestinations = destinations.filter(dest =>
+    dest.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="insurance-container">
@@ -42,8 +77,17 @@ const TravelInsurance = () => {
         <div className="destination-box">
           <h3>Travel Destination</h3>
           <p>You can select multiple destinations</p>
+
+          <input
+            type="text"
+            placeholder="Search destination..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+
           <div className="destinations">
-            {destinations.map((dest) => (
+            {filteredDestinations.map((dest) => (
               <div
                 key={dest}
                 className={`destination ${selectedDestinations.includes(dest) ? 'selected' : ''}`}
@@ -81,12 +125,43 @@ const TravelInsurance = () => {
 
             <div className="traveller-info">
               <label>TRAVELLERS & AGE</label>
-              <button>Select Travellers</button>
+              <button onClick={() => setShowTravellerForm(!showTravellerForm)}>
+                {showTravellerForm ? 'Hide Travellers' : 'Select Travellers'}
+              </button>
               <p>Senior citizens above 65 years are not covered.</p>
             </div>
+
+            {showTravellerForm && (
+              <div className="traveller-form">
+                {travellers.map((traveller, index) => (
+                  <div key={index}>
+                    <label>Traveller {index + 1} Age:</label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="65"
+                      value={traveller.age}
+                      onChange={(e) => handleTravellerAgeChange(index, e.target.value)}
+                    />
+                  </div>
+                ))}
+                <button onClick={addTraveller}>+ Add Traveller</button>
+              </div>
+            )}
           </div>
 
-          <button className="view-plans-btn">VIEW PLANS</button>
+          <button className="view-plans-btn" onClick={handleViewPlans}>VIEW PLANS</button>
+
+          {plansVisible && (
+            <div className="plans-box">
+              <h4>Available Plans</h4>
+              <ul>
+                <li>🏥 HDFC Basic Plan - ₹500</li>
+                <li>🧳 Reliance Premium Plan - ₹750</li>
+                <li>🌍 SYMBO Global Plan - ₹1100</li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

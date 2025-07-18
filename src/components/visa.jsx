@@ -7,9 +7,14 @@ const Visa = () => {
   const [visaType, setVisaType] = useState('Tourist');
   const [travelDate, setTravelDate] = useState('2025-08-01');
   const [applicants, setApplicants] = useState(1);
+  const [resultVisible, setResultVisible] = useState(false);
 
   const countries = ['India', 'USA', 'UK', 'Canada', 'Australia', 'UAE'];
   const visaTypes = ['Tourist', 'Business', 'Student', 'Work', 'Transit'];
+
+  const handleSubmit = () => {
+    setResultVisible(true);
+  };
 
   return (
     <div className="visa-service-container">
@@ -77,7 +82,20 @@ const Visa = () => {
         </div>
       </div>
 
-      <button className="submit-button">GET VISA INFO</button>
+      <button className="submit-button" onClick={handleSubmit}>
+        GET VISA INFO
+      </button>
+
+      {resultVisible && (
+        <div className="visa-result">
+          <h3>Visa Search Summary</h3>
+          <p><strong>Nationality:</strong> {nationality}</p>
+          <p><strong>Destination:</strong> {destination}</p>
+          <p><strong>Visa Type:</strong> {visaType}</p>
+          <p><strong>Travel Date:</strong> {travelDate}</p>
+          <p><strong>Applicants:</strong> {applicants}</p>
+        </div>
+      )}
     </div>
   );
 };
