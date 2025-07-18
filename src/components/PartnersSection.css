@@ -1,0 +1,100 @@
+.partners-wrapper {
+  padding: 40px;
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.section {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 26px;
+  color: #003366;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.airline-cards,
+.hotel-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.airline-card,
+.hotel-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  width: 180px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.airline-card:hover,
+.hotel-card:hover {
+  transform: translateY(-5px);
+}
+
+.airline-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.airline-card h3,
+.hotel-caption {
+  font-size: 16px;
+  color: #333;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .airline-card,
+  .hotel-card {
+    width: 45%;
+  }
+
+  .section h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .airline-cards,
+  .hotel-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .airline-card,
+  .hotel-card {
+    width: 90%;
+  }
+
+  .airline-card img,
+  .hotel-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section h2 {
+    font-size: 18px;
+  }
+}

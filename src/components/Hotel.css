@@ -1,0 +1,150 @@
+/* Reset and base styling */
+
+
+/* Container */
+.hotel-booking-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form */
+.hotel-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.hotel-form label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.hotel-form input,
+.hotel-form select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.hotel-form button {
+  background-color: #1e88e5;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.hotel-form button:hover {
+  background-color: #1565c0;
+}
+
+/* Results box */
+.results-box {
+  margin-top: 2rem;
+  background-color: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.results-box h3 {
+  color: #1565c0;
+  margin-bottom: 1rem;
+}
+
+.results-box p {
+  margin: 0.3rem 0;
+}
+
+/* Hotel List Cards */
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.hotel-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding: 1rem;
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.hotel-card h4 {
+  margin: 0.8rem 0 0.4rem;
+  color: #1e88e5;
+}
+
+.hotel-card p {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.pay-button,
+.cancel-button {
+  margin-top: 1.5rem;
+  margin-right: 1rem;
+  padding: 0.75rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pay-button {
+  background-color: #43a047;
+  color: white;
+}
+
+.pay-button:hover {
+  background-color: #2e7d32;
+}
+
+.cancel-button {
+  background-color: #e53935;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #b71c1c;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .hotel-booking-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .hotel-card img {
+    height: 130px;
+  }
+
+  .hotel-form button,
+  .pay-button,
+  .cancel-button {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,157 @@
+/* Base container */
+.cruise-container {
+  background-color: #f0f8ff;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Heading */
+.cruise-container h2 {
+  text-align: center;
+  color: #1e3a8a;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/* Form layout */
+.form-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Input fields */
+.input-box {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.input-box label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+.input-box select,
+.input-box input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* Search button */
+.search-btn {
+  padding: 0.6rem 1.2rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex: 1 1 100%;
+}
+
+.search-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* Result box */
+.result-box {
+  margin-top: 2rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 12px rgba(0,0,0,0.05);
+}
+
+.result-box h3 {
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+.result-box p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* Action buttons */
+.book-btn,
+.cancel-btn {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-right: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.book-btn {
+  background-color: #22c55e;
+  color: white;
+}
+
+.book-btn:hover {
+  background-color: #16a34a;
+}
+
+.cancel-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-box {
+    width: 100%;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  .book-btn,
+  .cancel-btn {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cruise-container {
+    padding: 1.2rem;
+  }
+
+  .cruise-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .result-box p {
+    font-size: 0.95rem;
+  }
+
+  .book-btn,
+  .cancel-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

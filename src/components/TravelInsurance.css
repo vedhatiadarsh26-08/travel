@@ -1,0 +1,223 @@
+/* Base container */
+.insurance-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: #f9f9f9;
+}
+
+/* Left section */
+.insurance-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.insurance-left h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.offered-by {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.insurance-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.insurance-feature img {
+  width: 40px;
+  height: 40px;
+}
+
+.insurance-feature h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.insurance-feature p {
+  margin: 0.25rem 0 0;
+  color: #555;
+}
+
+/* Right section */
+.insurance-right {
+  flex: 1;
+  min-width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.07);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.banner {
+  background-color: #22c55e;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Destination list */
+.destination-box h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.destination-box p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.destinations {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.destination {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #eef1f7;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+.destination.selected {
+  background-color: #dbeafe;
+  border: 2px solid #2563eb;
+}
+
+/* Travel date & traveller section */
+.travel-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.travel-date,
+.traveller-info {
+  flex: 1;
+  min-width: 160px;
+}
+
+.travel-date label,
+.traveller-info label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.travel-date input {
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-right: 0.4rem;
+}
+
+.traveller-info button {
+  padding: 0.45rem 1rem;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.traveller-info p {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* CTA Button */
+.view-plans-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  background-color: #2563eb;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.view-plans-btn:hover {
+  background-color: #1e3a8a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .insurance-container {
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .insurance-left h1 {
+    font-size: 1.6rem;
+  }
+
+  .banner {
+    font-size: 0.85rem;
+  }
+
+  .travel-date input {
+    margin-top: 0.4rem;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .view-plans-btn {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .insurance-feature {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .destinations {
+    flex-direction: column;
+  }
+
+  .travel-details {
+    flex-direction: column;
+  }
+
+  .travel-date,
+  .traveller-info {
+    width: 100%;
+  }
+
+  .travel-date input {
+    width: 100%;
+  }
+
+  .destination {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+    
