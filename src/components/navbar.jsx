@@ -31,6 +31,7 @@ const Navbar = () => {
           <img src={logo} alt="Logo" className="logo" />
           <h1>Travel Booking App</h1>
         </div>
+        <h1 style={{color:'red',textAlign:'center', fontSize:'3vh'}}>Make your trip  <br/>more enjoyable😎</h1>
         <div className="right">
           <div className="dropdown">
             <button className="dropbtn">Location</button>
